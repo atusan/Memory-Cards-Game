@@ -38,12 +38,16 @@ init();
 function init(){
     console.log('init is working')
     numberOfHearts = 3
+    
+    render();
+}
+
+function render(){
     for (let img in imgsLookup){
         let cardImg = document.createElement('img');
         cardImg.setAttribute('src','imgs/back.svg');
+        cardImg.setAttribute('id','img');
     }
-
-
 
 }
 
