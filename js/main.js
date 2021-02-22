@@ -1,48 +1,51 @@
 //constant
-const imgsLookup = [
-    {
-        imageUrl: 'imgs/one.svg',
-        name: 'scissors'
+const imgsLookup = {
+    one:{
+        src: 'imgs/one.svg',
+        name: 'one'
     },
-    {
-        imageUrl: 'imgs/two.svg',
-        name: 'rock'
+    two:{
+        src: 'imgs/two.svg',
+        name: 'two'
     },
-    {
-        imageUrl: 'imgs/three.svg',
-        name: 'paper'
+    three:{
+        src: 'imgs/three.svg',
+        name: 'three'
     },
-    {
-        imageUrl: 'imgs/four.svg',
-        name: 'scissors'
-    },
-    {
-        imageUrl: 'imgs/one.svg',
-        name: 'scissors'
-    },
-    {
-        imageUrl: 'imgs/two.svg',
-        name: 'rock'
-    },
-    {
-        imageUrl: 'imgs/three.svg',
-        name: 'paper'
-    },
-    {
-        imageUrl: 'imgs/four.svg',
-        name: 'scissors'
-    },
-]
+    four:{
+        src: 'imgs/four.svg',
+        name: 'four'
+    }  
+}
 
 let numberOfHearts;
-let result;
+
 
 // cached elements
-const result = document.getElementById('result');
+const msg = document.getElementById('result');
 const heartsNumber = document.getElementById('heartsImg');
 const imgsContainers = document.querySelector('.container');
 const btnRestart = document.querySelector('button');
 
 const imgsPlayCards = document.getElementById('imgs')
+
+// event listeners
+// btnRestart.addEventListener('click',restart);
+// imgsPlayCards.addEventListener('click', flipCard);
+
+init();
+
+function init(){
+    console.log('init is working')
+    numberOfHearts = 3
+    for (let img in imgsLookup){
+        let cardImg = document.createElement('img');
+        cardImg.setAttribute('src','imgs/back.svg');
+    }
+
+
+
+}
+
 
 
