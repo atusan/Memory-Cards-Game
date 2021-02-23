@@ -10,30 +10,16 @@ html, * {
     justify-content: center;
     align-items: center;
   }
-  /* main {
-    display: grid;
-    outline: 1px solid #2f4f90!important;
-    grid-template-columns: 30vmin 30vmin 30vmin 30vmin;
-    grid-template-rows: 10vmin 10vmin 30vmin 30vmin 15vmin;
-  } */
 
-  main * {
+  .container{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    
   }
-  main h1{
-      grid-column:span 4;
-  }
-
-  main #heartsImg{
-    grid-column:span 4;
-  }
-  
-  main button {
-    grid-column: span 4;
-    margin: 2vmin;
+  .img{
+    height:170px;
+    width:120px;
   }
 
   button {
@@ -46,5 +32,7 @@ html, * {
     font-size: 4vmin;
     outline: none;
   }
+  
+
   
   

@@ -1,22 +1,38 @@
 //constant
-const imgsLookup = {
-    one:{
+const imagesList = [
+    {
         src: 'imgs/one.svg',
         name: 'one'
     },
-    two:{
+    {
         src: 'imgs/two.svg',
         name: 'two'
     },
-    three:{
+    {
         src: 'imgs/three.svg',
         name: 'three'
     },
-    four:{
+    {
+        src: 'imgs/four.svg',
+        name: 'four'
+    }, 
+    {
+        src: 'imgs/one.svg',
+        name: 'one'
+    },
+    {
+        src: 'imgs/one.svg',
+        name: 'one'
+    },
+   {
+        src: 'imgs/three.svg',
+        name: 'three'
+    },
+   {
         src: 'imgs/four.svg',
         name: 'four'
     }  
-}
+]
 
 let numberOfHearts;
 
@@ -25,13 +41,11 @@ let numberOfHearts;
 const msg = document.getElementById('result');
 const heartsNumber = document.getElementById('heartsImg');
 const imgsContainers = document.querySelector('.container');
+const cards = document.querySelectorAll('.cards');
+console.log(cards)
 const btnRestart = document.querySelector('button');
 
-const imgsPlayCards = document.getElementById('imgs')
 
-// event listeners
-// btnRestart.addEventListener('click',restart);
-// imgsPlayCards.addEventListener('click', flipCard);
 
 init();
 
@@ -43,13 +57,39 @@ function init(){
 }
 
 function render(){
-    for (let img in imgsLookup){
-        let cardImg = document.createElement('img');
-        cardImg.setAttribute('src','imgs/back.svg');
-        cardImg.setAttribute('id','img');
+    
+    const shuffleCards = shuffle(imagesList)
+    console.log(shuffleCards)
+    for(card in shuffleCards){
+        
+        
+
     }
 
+
+
+
+
 }
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
 
 
 
