@@ -33,6 +33,7 @@ const imagesList = [
         name: 'four'
     }  
 ]
+const imgSrcs = ['imgs/one.svg','imgs/one.svg','imgs/two.svg','imgs/two.svg','imgs/three.svg','imgs/three.svg','imgs/four.svg','imgs/four.svg'];
 
 let numberOfHearts;
 
@@ -41,8 +42,8 @@ let numberOfHearts;
 const msg = document.getElementById('result');
 const heartsNumber = document.getElementById('heartsImg');
 const imgsContainers = document.querySelector('.container');
-const cards = document.querySelectorAll('.cards');
-console.log(cards)
+// const cards = document.querySelectorAll('.cards');
+// console.log(cards)
 const btnRestart = document.querySelector('button');
 
 
@@ -58,13 +59,16 @@ function init(){
 
 function render(){
     
-    const shuffleCards = shuffle(imagesList)
+    const shuffleCards = shuffle(imgSrcs);
     console.log(shuffleCards)
-    for(card in shuffleCards){
-        
-        
+    console.log(shuffleCards.length)
+    for (let i = 0; i < shuffleCards.length; i++){
+        const img = document.createElement('img');
+        img.setAttribute('src',shuffleCards[i]);
+        imgsContainers.appendChild('img');
 
     }
+    console.log('img') 
 
 
 
