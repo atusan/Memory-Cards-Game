@@ -21,6 +21,9 @@ html, * {
     height:170px;
     width:120px;
   }
+  .no-show{
+    visibility: hidden;
+  }
 
   button {
     margin-top: 15vmin;
