@@ -3,50 +3,42 @@ const cardLists = [
     {
         src: 'imgs/one.svg',
         name: 'one',
-        flip: false,
-        facedown:'true'
+        back:'imgs/back.svg'
     },
     {
         src: 'imgs/two.svg',
         name: 'two',
-        flip: false,
-        facedown:true
+        back:'imgs/back.svg'
     },
     {
         src: 'imgs/three.svg',
         name: 'three',
-        flip: false,
-        facedown:true
+        back:'imgs/back.svg'
     },
     {
         src: 'imgs/four.svg',
         name: 'four',
-        flip: false,
-        facedown:true
+        back:'imgs/back.svg'
     }, 
     {
         src: 'imgs/one.svg',
         name: 'one',
-        flip: false,
-        facedown:true
+        back:'imgs/back.svg'
     },
     {
         src: 'imgs/one.svg',
         name: 'one',
-        flip: false,
-        facedown:true
+        back:'imgs/back.svg'
     },
    {
         src: 'imgs/three.svg',
         name: 'three',
-        flip: false,
-        facedown:true
+        back:'imgs/back.svg'
     },
    {
         src: 'imgs/four.svg',
         name: 'four',
-        flip: false,
-        facedown:true
+        back:'imgs/back.svg'
     }  
 ]
 // let cards = shuffle(cardLists);
@@ -57,6 +49,7 @@ let cards;
 let numberOfHearts;
 let chosenCards;
 let count;
+let delay;
 
 
 // cached elements
@@ -64,6 +57,8 @@ let count;
 const deck = document.getElementById('deck')
 
 const container = document.querySelector('.container');
+
+// const selectedEls = document.querySelectorAll('.selected');
 
 document.getElementById('cardDivs')
   .addEventListener('click', handleCardClick);
@@ -77,7 +72,7 @@ function init(){
     cards = shuffle(cardLists);
     numberOfHearts = 3
     count = 0
-    openedCards = []
+    delay= 500
     chosenCards = []
     
     render();
@@ -85,63 +80,110 @@ function init(){
 }
 
 function render(){
-     
-//     for (let i = 0; i < cards.length; i++){
-//         // console.log(cards[i].)
-//         const imgCard = document.createElement('img');
-//         console.log(cards[i].flip)
-//         if (cards[i].flip){
-//             imgCard.setAttribute('src',cards[i].src);
-//             imgCard.setAttribute('class', 'open')
-//             imgCard.setAttribute('class', 'disabled')
-//         }
-//         else{
-//             imgCard.setAttribute('src','imgs/back.svg');
-//         }
-//         imgCard.setAttribute('id',i);
-//         cardContainers.appendChild(imgCard);
-//     }
-//     console.log(cardContainers,'imgcontainer')
-     
+
+// for (let i = 0; i < cards.length; i++){
+//     const card = document.createElement('div');
+//     card.setAttribute('class','card');
+//     card.dataset.name = cards[i].name;
+//     card.style.backgroundImage = `url(${cards[i].src})`;
+//     container.appendChild(card);
 // }
 for (let i = 0; i < cards.length; i++){
-    const card = document.createElement('div');
-    card.setAttribute('class','card');
-    card.dataset.name = cards[i].name;
-    card.style.backgroundImage = `url(${cards[i].src})`;
-    container.appendChild(card);
-}
-console.log(container)
+        const card = document.createElement('div');
+        card.setAttribute('class','card');
+        card.dataset.name = cards[i].name;
+
+        const faceDown = document.createElement('div');
+        faceDown.setAttribute('class' , 'faceDown');
+        faceDown.style.backgroundImage = `url(${cards[i].back})`;
+
+        const faceUp = document.createElement('div')
+        faceUp.setAttribute('class' , 'faceUp');
+        faceUp.style.backgroundImage = `url(${cards[i].src})`;
+       
+        container.appendChild(card);
+        container.appendChild(faceDown);
+        container.appendChild(faceUp);
+  }
 }
 
 
 function handleCardClick(e){
-    console.log('handleCardClick its working ')
-    console.log(e.target)
+    // console.log('handleCardClick its working ')
+    // console.log(e.target)
     
     let cardClicked = e.target;
-    chosenCards = [];
     
+    // add two clicked cards in an array to check if they are match or not
     if (count < 2) {
         count++
-
+        
         cardClicked.classList.add('selected');
-        // cardClicked.classList.add('disable');
-        // console.log(cardClicked.dataset.name);
+        
         chosenCards.push(cardClicked);
-        console.log(chosenCards,'chosencards')
-
-        if (chosenCards[0].dataset.name === chosenCards[1].dataset.name){
-                    match();
+    }
+        // comparing two item 
+        console.log(chosenCards[0].dataset.name,'chosencards number 1')
+        console.log(chosenCards.length,'chosenCards length')
+        if (count === 2 ){
+            if (chosenCards[0].dataset.name === chosenCards[1].dataset.name){
+                    // match();
+                    setTimeout(match, delay)
                 }
                 else{
-                    unmatch();
+                    // unmatch();
+                    setTimeout(unmatch, delay)
                 }
+        }
         
-      }
-    console.log(chosenCards,'chosencards')
-    console.log(chosenCards[0].dataset.name)
+    
     }
+function match(){
+    const selectedEls = document.querySelectorAll('.selected');
+    console.log(selectedEls,'els with selected')
+    selectedEls.forEach((item) => {
+        // if (item.classList.unmatch){
+        //     item.classList.remove('unmatch');
+        // }
+        item.classList.add('match')
+        console.log(item)
+    })
+    console.log(selectedEls,'with match')
+    setTimeout(clearChosenCards, delay)
+    // clearChosenCards();
+    
+
+}
+
+function unmatch(){
+    const selectedEls = document.querySelectorAll('.selected');
+    selectedEls.forEach((item) => {
+        item.classList.add('unmatch')
+        console.log(item)
+        setTimeout(clearChosenCards, delay)
+        // clearChosenCards();
+    })
+    console.log(selectedEls,'with unmatch')
+    
+}
+
+function clearChosenCards(){
+    const selectedEls = document.querySelectorAll('.selected');
+    for (let i=0 ; i<2 ;i++){
+        chosenCards.pop(i);
+    }
+    count = 0;
+    selectedEls.forEach((item) => {
+        item.classList.remove('selected');
+        item.classList.remove('unmatch');
+        // console.log(item)
+    })
+    
+
+    // selectedEls.classList.remove('selected')
+    // console.log(chosenCards,'empty chosen card')
+
+}
 
 //shuflle function to randomize the array
 function shuffle(array) {
