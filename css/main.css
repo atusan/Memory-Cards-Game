@@ -1,40 +1,3 @@
-/* html, * {
-    font-family: helvetica;
-    box-sizing: border-box;
-  }
-  
-  body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-  }
-  .img{
-    height:170px;
-    width:120px;
-  }
-  .no-show{
-    visibility: hidden;
-  }
-
-  button {
-    margin-top: 15vmin;
-    size:8vmin;
-    background-color: white;
-    color: black;
-    border: 1vmin solid black;
-    border-radius: 4vmin;
-    font-size: 4vmin;
-    outline: none;
-  } */
 
   body {
     margin: 20px 0;
@@ -48,6 +11,7 @@
     justify-content: space-evenly;
   }
   .card {
+    
     margin: 5px;
     background-color: #6589f9;
     background-size: contain;
@@ -56,6 +20,7 @@
     height: 150px;
     width: 150px;
   }
+  
   .selected {
     border: 4px solid blue;
   }
@@ -69,18 +34,24 @@
   .unmatch{
     border:none
   }
-  .faceDown{
-    position: absolute;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-
-  .faceUp{
-    background-color: white;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+  
+.front {
+  position: absolute;
+  background-color: #fab942;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;  
+  height: 150px;
+  width: 150px;
+}
+.back {
+  /* position: absolute; */
+  background-color: white;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 150px;
+  width: 150px;
 }
   
   

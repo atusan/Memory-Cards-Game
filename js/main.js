@@ -26,8 +26,8 @@ const cardLists = [
         back:'imgs/back.svg'
     },
     {
-        src: 'imgs/one.svg',
-        name: 'one',
+        src: 'imgs/two.svg',
+        name: 'two',
         back:'imgs/back.svg'
     },
    {
@@ -93,17 +93,17 @@ for (let i = 0; i < cards.length; i++){
         card.setAttribute('class','card');
         card.dataset.name = cards[i].name;
 
-        const faceDown = document.createElement('div');
-        faceDown.setAttribute('class' , 'faceDown');
-        faceDown.style.backgroundImage = `url(${cards[i].back})`;
+        const front = document.createElement('div')
+        front.setAttribute('class' , 'front');
+        front.style.backgroundImage = `url(${cards[i].back})`;
 
-        const faceUp = document.createElement('div')
-        faceUp.setAttribute('class' , 'faceUp');
-        faceUp.style.backgroundImage = `url(${cards[i].src})`;
+        const back = document.createElement('div')
+        back.setAttribute('class' , 'back');
+        back.style.backgroundImage = `url(${cards[i].src})`;
        
-        container.appendChild(card);
-        container.appendChild(faceDown);
-        container.appendChild(faceUp);
+        container.appendChild(card)
+        card.appendChild(front)
+        card.appendChild(back)
   }
 }
 
@@ -113,6 +113,9 @@ function handleCardClick(e){
     // console.log(e.target)
     
     let cardClicked = e.target;
+
+    if (cardClicked.nodeName === 'SECTION') {
+        return}
     
     // add two clicked cards in an array to check if they are match or not
     if (count < 2) {
@@ -123,10 +126,11 @@ function handleCardClick(e){
         chosenCards.push(cardClicked);
     }
         // comparing two item 
-        console.log(chosenCards[0].dataset.name,'chosencards number 1')
         console.log(chosenCards.length,'chosenCards length')
         if (count === 2 ){
-            if (chosenCards[0].dataset.name === chosenCards[1].dataset.name){
+            console.log(chosenCards[0].parentNode.dataset.name,'chosencards number 1')
+            console.log(chosenCards[1].parentNode.dataset.name,'chosencards number 2')
+            if (chosenCards[0].parentNode.dataset.name === chosenCards[1].parentNode.dataset.name){
                     // match();
                     setTimeout(match, delay)
                 }
@@ -178,10 +182,7 @@ function clearChosenCards(){
         item.classList.remove('unmatch');
         // console.log(item)
     })
-    
-
-    // selectedEls.classList.remove('selected')
-    // console.log(chosenCards,'empty chosen card')
+ 
 
 }
 
