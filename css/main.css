@@ -36,6 +36,7 @@
   }
   
 .front {
+  
   position: absolute;
   background-color: #fab942;
   background-size: contain;
@@ -45,8 +46,9 @@
   width: 150px;
 }
 .back {
-  /* position: absolute; */
-  background-color: white;
+  
+  position: absolute;
+  z-index: 5;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
